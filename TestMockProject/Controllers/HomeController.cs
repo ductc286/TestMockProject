@@ -1,28 +1,25 @@
 ﻿using System.Web.Mvc;
-using TestMockProject.Core.Repositories;
 
-namespace TestMockProject.Controllers
+namespace IdentitySample.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            StaffRepository staffRepository = new StaffRepository();
-            var list = staffRepository.GetAll();
-            if (list != null)
-            {
-                ViewBag.A = "k null";
-            }
             return View();
         }
 
+        [HttpGet]
+        [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your app description page.";
 
             return View();
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
