@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TestMockProject.Core.Repositories;
 
 namespace TestMockProject.Controllers
 {
@@ -10,6 +7,12 @@ namespace TestMockProject.Controllers
     {
         public ActionResult Index()
         {
+            StaffRepository staffRepository = new StaffRepository();
+            var list = staffRepository.GetAll();
+            if (list != null)
+            {
+                ViewBag.A = "k null";
+            }
             return View();
         }
 
